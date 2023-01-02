@@ -51,6 +51,7 @@ $(() => {
 
     socket.on("new message", (data) => {
         $chat.append(`<b>${data.nick}</b>: ${data.msg}<br/>`);
+        $chat.scrollTop($chat[0].scrollHeight);
     });
 
     socket.on("usernames", (data) => {
@@ -69,6 +70,8 @@ $(() => {
         for (let i = 0; i < data.length; i++) {
             displayMsg(data[i]);
         }
+
+        $chat.scrollTop($chat[0].scrollHeight);
     });
 
     function displayMsg(data) {
